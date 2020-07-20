@@ -70,6 +70,7 @@ jobs:
     - name: Deploy
       run: |
         gcloud auth login
+        4/2AGjI7kUNGkM9djZE4WeNQHUPstVk87lALufIPjoCdAoEcmo8YCjcWY
         gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE
         gcloud config set project PROJECT_ID
         ./kustomize edit set image sridharpulangari/go-calc:0.0.1
