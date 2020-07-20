@@ -69,7 +69,8 @@ jobs:
     # Deploy the Docker image to the GKE cluster
     - name: Deploy
       run: |
-        gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE --project $GKE_PROJECT
+        
+        gcloud container clusters get-credentials my-first-cluster-1 --zone us-west1-a --project reflected-flame-283905
         ./kustomize edit set image sridharpulangari/go-calc:0.0.1
         ./kustomize build . | kubectl apply -f -
         kubectl rollout status deployment/$DEPLOYMENT_NAME
