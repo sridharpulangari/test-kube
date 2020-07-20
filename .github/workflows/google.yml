@@ -24,7 +24,7 @@ env:
   GKE_CLUSTER: GCP_LOGIN
   IMAGE: sridharpulangari/go-calc:0.0.1
   REGISTRY_HOSTNAME: sridharpulangari
-  DEPLOYMENT_NAME: github-actions-test
+  DEPLOYMENT_NAME: github-actions-test1
 
 jobs:
   setup-build-publish-deploy:
