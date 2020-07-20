@@ -69,7 +69,7 @@ jobs:
     # Deploy the Docker image to the GKE cluster
     - name: Deploy
       run: |
-        gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE --project $GKE_PROJECT
+        gcloud container clusters get-credentials $GKE_CLUSTER --zone $GKE_ZONE
         gcloud config set project PROJECT_ID
         ./kustomize edit set image sridharpulangari/go-calc:0.0.1
         ./kustomize build . | kubectl apply -f -
