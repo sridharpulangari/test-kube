@@ -70,8 +70,17 @@ jobs:
     - name: Deploy
       run: |
         
-        gcloud container clusters get-credentials my-first-cluster-1 --zone us-west1-a --project reflected-flame-283905
-        ./kustomize edit set image sridharpulangari/go-calc:0.0.1
-        ./kustomize build . | kubectl apply -f -
+          
+        gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project reflected-flame-283905
+        kubectl config current-context
+        kubectl create deployment $DEPLOYMENT_NAME --image=sridharpulangari/go-calc:0.0.1 --dry-run -o yaml > deployment.yaml
+        kubectl apply -f deployment.yaml
         kubectl rollout status deployment/$DEPLOYMENT_NAME
+        kubectl create service loadbalancer $DEPLOYMENT_NAME --tcp=80:$PORT --dry-run -o yaml > service.yaml
+        kubectl apply -f service.yaml
         kubectl get services -o wide
+        
+   #     ./kustomize edit set image sridharpulangari/go-calc:0.0.1
+   #     ./kustomize build . | kubectl apply -f -
+   #     kubectl rollout status deployment/$DEPLOYMENT_NAME
+   #     kubectl get services -o wide
