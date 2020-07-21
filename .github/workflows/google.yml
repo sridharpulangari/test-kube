@@ -25,7 +25,7 @@ env:
   IMAGE: sridharpulangari/go-calc:0.0.1
   REGISTRY_HOSTNAME: sridharpulangari
   DEPLOYMENT_NAME: github-actions-test1
-  PORT: 80
+  PORT: 8080
 
 jobs:
   setup-build-publish-deploy:
